@@ -1,0 +1,49 @@
+name: NAMI CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    # Backend
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install Backend Dependencies
+      run: |
+        cd NAMI/server/backend
+        npm ci
+        
+    - name: Build Backend
+      run: |
+        cd NAMI/server/backend
+        npm run build
+        
+    # Frontend
+    - name: Install Frontend Dependencies
+      run: |
+        cd NAMI/client/frontend
+        npm ci
+        
+    - name: Build Frontend
+      run: |
+        cd NAMI/client/frontend
+        npm run build
+        
+    # Docker Build (Placeholder)
+    - name: Build Docker Images
+      if: github.event_name == 'push'
+      run: |
+        echo "Building Docker images..."
+        # docker build -t nami-backend ./NAMI/server/backend
+        # docker build -t nami-frontend ./NAMI/client/frontend

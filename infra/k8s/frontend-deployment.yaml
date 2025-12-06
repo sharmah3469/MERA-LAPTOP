@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nami-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nami-frontend
+  template:
+    metadata:
+      labels:
+        app: nami-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: registry.example.com/nami-frontend:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nami-frontend-svc
+spec:
+  selector:
+    app: nami-frontend
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer

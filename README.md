@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NAMI - Social Media Platform
 
 NAMI is a localized, mobile-first social media platform built for the Indian market.
@@ -48,3 +49,9 @@ NAMI is a localized, mobile-first social media platform built for the Indian mar
 - `server/backend`: Express API
 - `infra`: Infrastructure configurations (Docker, K8s, Terraform)
 - `scripts`: Utility scripts
+=======
+# MERA-LAPTOP
+this is my first git repository
+<br>
+author - HARSH
+>>>>>>> 4f70caac520f8b8b5c6d2685ab993baf3e11e356
